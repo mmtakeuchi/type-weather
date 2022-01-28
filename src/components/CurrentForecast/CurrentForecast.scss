@@ -1,0 +1,71 @@
+.weather-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  border: 1px solid blue;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+
+  .header {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .weather-details {
+    display: flex;
+    flex-wrap: wrap;
+
+    .left {
+      margin: 1.5rem 3rem 0 1rem;
+
+      .city,
+      .sky {
+        padding-left: 1rem;
+      }
+
+      .temp {
+        display: flex;
+
+        span {
+          font-size: 4rem;
+          font-weight: 300;
+          margin-left: 1rem;
+        }
+      }
+
+      .sky {
+        font-size: 1.2rem;
+        text-transform: capitalize;
+      }
+    }
+
+    .right {
+      margin: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      div {
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      span {
+        font-weight: 400;
+      }
+
+      .high-low {
+        display: flex;
+        align-items: center;
+
+        div {
+          margin-bottom: 0;
+        }
+
+        span {
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+}
