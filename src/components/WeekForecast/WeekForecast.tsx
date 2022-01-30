@@ -1,17 +1,15 @@
 import React from "react";
+import ForecastCard from "../ForecastCard/ForecastCard";
+import { IForecastItems } from "../../types";
 import "./WeekForecast.scss";
 
-type Props = {};
-
-const WeekForecast = (props: Props) => {
+const WeekForecast = ({ forecasts }: IForecastItems) => {
   return (
     <div className="forecast-container">
       <div className="header">Week Forecast</div>
       <div className="forecast-list">
         {[1, 2, 3, 4, 5].map((num, i) => (
-          <div key={i} className="forecast-item">
-            {num}
-          </div>
+          <ForecastCard key={i} />
         ))}
       </div>
     </div>

@@ -1,29 +1,32 @@
 import React, { useState } from "react";
 import "./Search.scss";
+import { ISearch } from "../../types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-type Props = {};
-
-const Search = (props: Props) => {
-  const [query, setQuery] = useState<string>("");
-  console.log(query);
+const Search = ({ handleQuery }: ISearch) => {
+  const [input, setInput] = useState<string>("");
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
+    setInput(event.target.value);
   };
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    handleQuery(input);
   };
 
   return (
     <form onSubmit={onSubmit} className="search">
+      <label>
+        <FontAwesomeIcon icon={faSearch} />
+      </label>
       <input
         type="text"
         placeholder="Search"
-        value={query}
+        value={input}
         onChange={onChange}
       />
-      <button type="submit">Search</button>
     </form>
   );
 };

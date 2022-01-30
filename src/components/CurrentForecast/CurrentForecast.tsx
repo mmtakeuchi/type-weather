@@ -1,36 +1,35 @@
 import React from "react";
-import { IWeather } from "../../types";
-import { convertTime } from "../util";
+import { IWeatherItem } from "../../types";
+import { convertTime, renderLocaleTime } from "../../util";
 import "./CurrentForecast.scss";
 
-type Props = {
-  weather: IWeather;
-};
+const CurrentForecast = ({ forecast }: IWeatherItem) => {
+  console.log(forecast);
 
-const CurrentForecast = ({ weather }: Props) => {
-  console.log(weather);
   return (
     <div className="weather-card">
       <div className="header">Current Weather</div>
       <div className="weather-details">
         <div className="left">
-          <h3 className="city">Phoenix</h3>
+          <h2 className="city">{forecast?.name}</h2>
           <div className="temp">
             <img
               src=" http://openweathermap.org/img/wn/10d@2x.png"
               alt="weather icon"
             />
             <span>
-              76<sup>&deg;</sup>
+              {forecast?.main.temp.toFixed(0)}
+              <sup>&deg;</sup>
             </span>
           </div>
-          <h5 className="sky">clear sky</h5>
+          <div className="sky">{forecast?.weather[0].description}</div>
         </div>
         <div className="right">
           <div>
             Feels Like{" "}
             <span>
-              74<sup>&deg;</sup>
+              {forecast?.main.feels_like.toFixed(0)}
+              <sup>&deg;</sup>
             </span>
           </div>
 
@@ -38,38 +37,42 @@ const CurrentForecast = ({ weather }: Props) => {
             <div className="high">
               H:
               <span>
-                68<sup>&deg;</sup>
+                {forecast?.main.temp_max.toFixed(0)}
+                <sup>&deg;</sup>
               </span>
             </div>
             <div className="low">
               L:
               <span>
-                80<sup>&deg;</sup>
+                {forecast?.main.temp_min.toFixed(0)}
+                <sup>&deg;</sup>
               </span>
             </div>
           </div>
 
           <div className="humidity">
-            Humidty <span>20%</span>
+            Humidty <span>{forecast?.main.humidity}%</span>
           </div>
 
           <div className="winds">
-            Wind <span>3</span>
+            Wind <span>{forecast?.wind.speed} mph</span>
           </div>
 
           <div className="pressure">
-            Pressure <span>1014 hPa</span>
+            Pressure <span>{forecast?.main.pressure} hPa</span>
           </div>
 
           <div className="sunrise-sunset">
             <div className="sunrise">
-              Sunrise <span>{convertTime(1560343627, -25200)}</span>
+              Sunrise{" "}
+              <span>
+                {convertTime(forecast?.sys.sunrise, forecast?.timezone)}
+              </span>
             </div>
             <div className="sunset">
               Sunset{" "}
               <span>
-                {convertTime(1560396563, -25200)}
-                {/* {new Date(1643331271).toLocaleString().split(", ")[1]} */}
+                {convertTime(forecast?.sys.sunset, forecast?.timezone)}
               </span>
             </div>
           </div>

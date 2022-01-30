@@ -1,0 +1,24 @@
+.forecast-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  .day {
+    color: #1e528e;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .sky {
+    color: #1e528e;
+    text-transform: capitalize;
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+
+  .temperatures {
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+}

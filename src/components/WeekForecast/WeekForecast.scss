@@ -1,11 +1,12 @@
 .forecast-container {
   display: flex;
   flex-direction: column;
-  padding: 1rem 2rem;
-  border: 1px solid blue;
+  padding: 1.5rem 2rem;
   border-radius: 10px;
   font-size: 1rem;
   margin-bottom: 1rem;
+  background: linear-gradient(to bottom, #fff 0%, #b7eaff 100%);
+  box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 10px;
 
   .header {
     font-size: 1.25rem;
@@ -15,6 +16,7 @@
   .forecast-list {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     margin-top: 1rem;
   }
 }
