@@ -15,7 +15,7 @@ export const renderLocaleTime = (dt: any) => {
   });
 };
 
-export const convertDay = (dt: number) => {
+export const convertDay = (dt: any) => {
   const days = [
     "Sunday",
     "Monday",

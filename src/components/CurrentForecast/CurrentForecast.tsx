@@ -14,7 +14,7 @@ const CurrentForecast = ({ forecast }: IWeatherItem) => {
           <h2 className="city">{forecast?.name}</h2>
           <div className="temp">
             <img
-              src=" http://openweathermap.org/img/wn/10d@2x.png"
+              src={`http://openweathermap.org/img/wn/${forecast?.weather[0].icon}@2x.png`}
               alt="weather icon"
             />
             <span>

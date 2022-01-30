@@ -26,6 +26,17 @@ export const fetchForecast = async (city: string) => {
   return response;
 };
 
+export const fetchLocation = async (city: string) => {
+  const response = await axios
+    .get(
+      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+    )
+    .then((response) => response.data)
+    .catch((error) => console.log(error));
+
+  return response;
+};
+
 export const fetchData = async (city: string) => {
   try {
     const data = await Promise.all([fetchWeather(city), fetchForecast(city)]);

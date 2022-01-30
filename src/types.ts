@@ -34,21 +34,23 @@ export interface IWeatherItem {
 }
 
 export interface IForecast {
-  day: number;
-  temp: {
+  dt: number;
+  main: {
     temp_min: number;
     temp_max: number;
   };
-  weather: {
-    id: number;
-    main: string;
-    description: string;
-    icon: string;
-  };
+  weather: [
+    {
+      id: number;
+      main: string;
+      description: string;
+      icon: string;
+    }
+  ];
 }
 
 export interface IForecastItem {
-  forecast: IForecast;
+  forecast?: IForecast;
 }
 
 export interface IForecastItems {

@@ -8,8 +8,8 @@ const WeekForecast = ({ forecasts }: IForecastItems) => {
     <div className="forecast-container">
       <div className="header">Week Forecast</div>
       <div className="forecast-list">
-        {[1, 2, 3, 4, 5].map((num, i) => (
-          <ForecastCard key={i} />
+        {forecasts?.map((forecast) => (
+          <ForecastCard key={forecast.dt} forecast={forecast} />
         ))}
       </div>
     </div>

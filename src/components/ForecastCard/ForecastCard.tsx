@@ -1,27 +1,29 @@
 import React from "react";
+import { IForecastItem } from "../../types";
 import { convertDay } from "../../util";
 import "./ForecastCard.scss";
 
-type Props = {};
-
-const ForecastCard = (props: Props) => {
+const ForecastCard = ({ forecast }: IForecastItem) => {
+  console.log(forecast);
   return (
     <div className="forecast-card">
-      <div className="day">Day</div>
+      <div className="day">{convertDay(forecast?.dt)}</div>
       <div className="forecast-icon">
         <img
-          src=" http://openweathermap.org/img/wn/10d@2x.png"
+          src={`http://openweathermap.org/img/wn/${forecast?.weather[0].icon}@2x.png`}
           alt="forecast icon"
         />
       </div>
-      <div className="sky">clear sky</div>
+      <div className="sky">{forecast?.weather[0].description}</div>
       <div className="temperatures">
         <span>
-          68<sup>&deg;</sup> /{" "}
+          {forecast?.main.temp_min.toFixed(0)}
+          <sup>&deg;</sup> /{" "}
         </span>
 
         <span>
-          80<sup>&deg;</sup>
+          {forecast?.main.temp_max.toFixed(0)}
+          <sup>&deg;</sup>
         </span>
       </div>
     </div>
