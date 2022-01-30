@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CurrentForecast from "./components/CurrentForecast/CurrentForecast";
+import Header from "./components/Header/Header";
 import Search from "./components/Search/Search";
 import WeekForecast from "./components/WeekForecast/WeekForecast";
 import { fetchWeather, fetchForecast, fetchData, fetchLocation } from "./api";
@@ -35,7 +36,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="main">
-        <div>Type Weather</div>
+        <Header />
         <Search handleQuery={handleQuery} />
         <CurrentForecast forecast={weather} />
         <WeekForecast forecasts={forecasts} />
