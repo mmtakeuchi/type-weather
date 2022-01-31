@@ -14,6 +14,7 @@ const Search = ({ handleQuery }: ISearch) => {
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     handleQuery(input);
+    setInput("");
   };
 
   return (
@@ -23,7 +24,7 @@ const Search = ({ handleQuery }: ISearch) => {
       </label>
       <input
         type="text"
-        placeholder="Search"
+        placeholder="Search Location"
         value={input}
         onChange={onChange}
       />

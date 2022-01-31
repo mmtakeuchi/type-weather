@@ -4,7 +4,6 @@ import { convertDay } from "../../util";
 import "./ForecastCard.scss";
 
 const ForecastCard = ({ forecast }: IForecastItem) => {
-  console.log(forecast);
   return (
     <div className="forecast-card">
       <div className="day">{convertDay(forecast?.dt)}</div>
@@ -14,15 +13,15 @@ const ForecastCard = ({ forecast }: IForecastItem) => {
           alt="forecast icon"
         />
       </div>
-      <div className="sky">{forecast?.weather[0].description}</div>
+      <div className="sky">{forecast?.weather[0].main}</div>
       <div className="temperatures">
         <span>
-          {forecast?.main.temp_min.toFixed(0)}
+          {forecast?.temp.min.toFixed(0)}
           <sup>&deg;</sup> /{" "}
         </span>
 
         <span>
-          {forecast?.main.temp_max.toFixed(0)}
+          {forecast?.temp.max.toFixed(0)}
           <sup>&deg;</sup>
         </span>
       </div>

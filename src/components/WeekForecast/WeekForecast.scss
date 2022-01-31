@@ -16,7 +16,8 @@
   .forecast-list {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    overflow-x: scroll;
+    // flex-wrap: wrap;
     margin-top: 1rem;
   }
 }

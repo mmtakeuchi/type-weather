@@ -3,7 +3,8 @@ import ForecastCard from "../ForecastCard/ForecastCard";
 import { IForecastItems } from "../../types";
 import "./WeekForecast.scss";
 
-const WeekForecast = ({ forecasts }: IForecastItems) => {
+const WeekForecast = ({ forecasts, isLoading, error }: IForecastItems) => {
+  if (error) return <></>;
   return (
     <div className="forecast-container">
       <div className="header">Week Forecast</div>

@@ -31,13 +31,15 @@ export interface IWeather {
 
 export interface IWeatherItem {
   forecast?: IWeather;
+  isLoading: boolean;
+  error: string;
 }
 
 export interface IForecast {
   dt: number;
-  main: {
-    temp_min: number;
-    temp_max: number;
+  temp: {
+    min: number;
+    max: number;
   };
   weather: [
     {
@@ -55,6 +57,8 @@ export interface IForecastItem {
 
 export interface IForecastItems {
   forecasts?: IForecast[];
+  isLoading: boolean;
+  error: string;
 }
 
 export interface ISearch {

@@ -1,14 +1,19 @@
 .header-container {
-  padding: 1.5rem 0;
+  top: 0;
+  max-width: 1000px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 1rem 0 2rem 0;
 
   h2 {
     margin: 0;
+    margin-left: 1rem;
   }
 
   a {
     color: black;
+    margin-right: 1rem;
   }
 }
