@@ -15,10 +15,15 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
-  console.log(error);
+  const [degrees, setDegrees] = useState(true);
+  console.log(degrees);
 
   const handleQuery = (input: string) => {
     setQuery(input);
+  };
+
+  const handleToggleSwitch = () => {
+    setDegrees(!degrees);
   };
 
   const handleFetchData = (query: string) => {
@@ -52,11 +57,14 @@ const App = () => {
               forecast={weather}
               isLoading={isLoading}
               error={error}
+              degrees={degrees}
+              handleToggle={handleToggleSwitch}
             />
             <WeekForecast
               forecasts={forecasts}
               isLoading={isLoading}
               error={error}
+              degrees={degrees}
             />
           </>
         )}

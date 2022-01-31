@@ -29,3 +29,9 @@ export const convertDay = (dt: any) => {
   const d = new Date(dt * 1000);
   return days[d.getDay()];
 };
+
+export const convertToCelcius = (c: string | undefined) => {
+  if (c !== undefined) {
+    return Math.round(((parseInt(c) - 32) * 5) / 9);
+  }
+};

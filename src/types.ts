@@ -33,6 +33,8 @@ export interface IWeatherItem {
   forecast?: IWeather;
   isLoading: boolean;
   error: string;
+  handleToggle: () => void;
+  degrees: boolean;
 }
 
 export interface IForecast {
@@ -53,14 +55,20 @@ export interface IForecast {
 
 export interface IForecastItem {
   forecast?: IForecast;
+  degrees: boolean;
 }
 
 export interface IForecastItems {
   forecasts?: IForecast[];
   isLoading: boolean;
   error: string;
+  degrees: boolean;
 }
 
 export interface ISearch {
   handleQuery: (input: string) => void;
+}
+
+export interface IToggleSwitch {
+  handleToggle: () => void;
 }

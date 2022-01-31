@@ -1,17 +1,27 @@
 import React from "react";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { IWeatherItem } from "../../types";
-import { convertTime } from "../../util";
+import { convertTime, convertToCelcius } from "../../util";
 import "./CurrentForecast.scss";
 
-const CurrentForecast = ({ forecast, isLoading, error }: IWeatherItem) => {
-  console.log(error);
+const CurrentForecast = ({
+  forecast,
+  isLoading,
+  error,
+  degrees,
+  handleToggle,
+}: IWeatherItem) => {
+  console.log(degrees);
   return (
     <div className={`weather-card ${error && "error"}`}>
       {error.length ? (
         <div className="error">{error}</div>
       ) : (
         <>
-          <div className="header">Current Weather</div>
+          <div className="header">
+            Current Weather
+            <ToggleSwitch handleToggle={handleToggle} />
+          </div>
           <div className="weather-details">
             <div className="left">
               <h2 className="city">{forecast?.name}</h2>
@@ -21,7 +31,9 @@ const CurrentForecast = ({ forecast, isLoading, error }: IWeatherItem) => {
                   alt="weather icon"
                 />
                 <span>
-                  {forecast?.main.temp.toFixed(0)}
+                  {degrees
+                    ? forecast?.main.temp.toFixed(0)
+                    : convertToCelcius(forecast?.main.temp.toFixed(0))}
                   <sup>&deg;</sup>
                 </span>
               </div>
@@ -31,7 +43,9 @@ const CurrentForecast = ({ forecast, isLoading, error }: IWeatherItem) => {
               <div>
                 Feels Like{" "}
                 <span>
-                  {forecast?.main.feels_like.toFixed(0)}
+                  {degrees
+                    ? forecast?.main.feels_like.toFixed(0)
+                    : convertToCelcius(forecast?.main.feels_like.toFixed(0))}
                   <sup>&deg;</sup>
                 </span>
               </div>
@@ -40,14 +54,18 @@ const CurrentForecast = ({ forecast, isLoading, error }: IWeatherItem) => {
                 <div className="high">
                   H:
                   <span>
-                    {forecast?.main.temp_max.toFixed(0)}
+                    {degrees
+                      ? forecast?.main.temp_max.toFixed(0)
+                      : convertToCelcius(forecast?.main.temp_max.toFixed(0))}
                     <sup>&deg;</sup>
                   </span>
                 </div>
                 <div className="low">
                   L:
                   <span>
-                    {forecast?.main.temp_min.toFixed(0)}
+                    {degrees
+                      ? forecast?.main.temp_min.toFixed(0)
+                      : convertToCelcius(forecast?.main.temp_min.toFixed(0))}
                     <sup>&deg;</sup>
                   </span>
                 </div>

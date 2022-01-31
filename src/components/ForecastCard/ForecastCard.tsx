@@ -1,9 +1,9 @@
 import React from "react";
 import { IForecastItem } from "../../types";
-import { convertDay } from "../../util";
+import { convertDay, convertToCelcius } from "../../util";
 import "./ForecastCard.scss";
 
-const ForecastCard = ({ forecast }: IForecastItem) => {
+const ForecastCard = ({ forecast, degrees }: IForecastItem) => {
   return (
     <div className="forecast-card">
       <div className="day">{convertDay(forecast?.dt)}</div>
@@ -16,12 +16,16 @@ const ForecastCard = ({ forecast }: IForecastItem) => {
       <div className="sky">{forecast?.weather[0].main}</div>
       <div className="temperatures">
         <span>
-          {forecast?.temp.min.toFixed(0)}
+          {degrees
+            ? forecast?.temp.min.toFixed(0)
+            : convertToCelcius(forecast?.temp.min.toFixed(0))}
           <sup>&deg;</sup> /{" "}
         </span>
 
         <span>
-          {forecast?.temp.max.toFixed(0)}
+          {degrees
+            ? forecast?.temp.max.toFixed(0)
+            : convertToCelcius(forecast?.temp.max.toFixed(0))}
           <sup>&deg;</sup>
         </span>
       </div>

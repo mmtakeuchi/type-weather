@@ -69,7 +69,6 @@ export const fetchData = async (city: string) => {
       console.log("400", city);
       return { status: 404, response: city.response };
     }
-    console.log("200", city);
     return city;
   });
 
