@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const baseUrl = "http://api.openweathermap.org";
+const baseUrl = "https://api.openweathermap.org";
 
 export const fetchWeather = async (city: string) => {
   const response = await axios
     .get(
-      `${baseUrl}/weather?q=${city}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+      `${baseUrl}/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
     )
     .then((response) => {
       return { status: 200, response: response.data };
@@ -13,19 +13,6 @@ export const fetchWeather = async (city: string) => {
     .catch((error) => {
       return { status: 404, response: error.response.data.message };
     });
-
-  return response;
-};
-
-export const fetchForecast = async (city: string) => {
-  const response = await axios
-    .get(
-      `${baseUrl}/data/2.5/forecast?q=Phoenix&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
-    )
-    .then((response) =>
-      response.data.list.filter((date: any) => date.dt_txt.includes("21:00"))
-    )
-    .catch((error) => console.log(error));
 
   return response;
 };
