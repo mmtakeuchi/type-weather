@@ -16,7 +16,6 @@ const App = () => {
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
   const [degrees, setDegrees] = useState(true);
-  console.log(degrees);
 
   const handleQuery = (input: string) => {
     setQuery(input);

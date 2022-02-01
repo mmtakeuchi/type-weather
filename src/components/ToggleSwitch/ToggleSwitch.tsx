@@ -2,8 +2,6 @@ import React from "react";
 import { IToggleSwitch } from "../../types";
 import "./ToggleSwitch.scss";
 
-type Props = {};
-
 const ToggleSwitch = ({ handleToggle }: IToggleSwitch) => {
   return (
     <div className="toggle-switch">

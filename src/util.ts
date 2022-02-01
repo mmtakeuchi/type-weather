@@ -35,3 +35,9 @@ export const convertToCelcius = (c: string | undefined) => {
     return Math.round(((parseInt(c) - 32) * 5) / 9);
   }
 };
+
+export const mileToKm = (n: number | undefined) => {
+  if (n !== undefined) {
+    return (n * 1.60934).toFixed(2);
+  }
+};

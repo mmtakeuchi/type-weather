@@ -1,12 +1,19 @@
 .toggle-switch {
   position: relative;
-  width: 75px;
+  width: 40px;
   display: inline-block;
   vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   text-align: left;
+
+  @media screen and (max-width: 991px) {
+    transform: scale(0.9);
+  }
+  @media screen and (max-width: 767px) {
+    transform: scale(0.825);
+  }
+  @media screen and (max-width: 575px) {
+    transform: scale(0.75);
+  }
 
   &-checkbox {
     display: none;
@@ -31,9 +38,10 @@
       display: block;
       float: left;
       width: 50%;
-      height: 34px;
+      content: "";
+      height: 20px;
+      line-height: 20px;
       padding: 0;
-      line-height: 34px;
       font-size: 14px;
       color: white;
       font-weight: bold;
@@ -69,13 +77,13 @@
 
   &-switch {
     display: block;
-    width: 24px;
-    margin: 5px;
+    width: 16px;
+    margin: 2px;
     background: #fff;
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 40px;
+    right: 20px;
     border: 0 solid #bbb;
     border-radius: 20px;
     transition: all 0.3s ease-in 0s;

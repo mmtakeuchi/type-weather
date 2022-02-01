@@ -1,7 +1,7 @@
 import React from "react";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { IWeatherItem } from "../../types";
-import { convertTime, convertToCelcius } from "../../util";
+import { convertTime, convertToCelcius, mileToKm } from "../../util";
 import "./CurrentForecast.scss";
 
 const CurrentForecast = ({
@@ -11,7 +11,6 @@ const CurrentForecast = ({
   degrees,
   handleToggle,
 }: IWeatherItem) => {
-  console.log(degrees);
   return (
     <div className={`weather-card ${error && "error"}`}>
       {error.length ? (
@@ -41,7 +40,7 @@ const CurrentForecast = ({
             </div>
             <div className="right">
               <div>
-                Feels Like{" "}
+                Feels Like:{" "}
                 <span>
                   {degrees
                     ? forecast?.main.feels_like.toFixed(0)
@@ -52,7 +51,7 @@ const CurrentForecast = ({
 
               <div className="high-low">
                 <div className="high">
-                  H:
+                  H:{" "}
                   <span>
                     {degrees
                       ? forecast?.main.temp_max.toFixed(0)
@@ -61,7 +60,7 @@ const CurrentForecast = ({
                   </span>
                 </div>
                 <div className="low">
-                  L:
+                  L:{" "}
                   <span>
                     {degrees
                       ? forecast?.main.temp_min.toFixed(0)
@@ -72,26 +71,31 @@ const CurrentForecast = ({
               </div>
 
               <div className="humidity">
-                Humidty <span>{forecast?.main.humidity}%</span>
+                Humidty: <span>{forecast?.main.humidity}%</span>
               </div>
 
               <div className="winds">
-                Wind <span>{forecast?.wind.speed} mph</span>
+                Wind:{" "}
+                <span>
+                  {degrees
+                    ? `${forecast?.wind.speed} mph`
+                    : `${mileToKm(forecast?.wind.speed)} kph`}
+                </span>
               </div>
 
               <div className="pressure">
-                Pressure <span>{forecast?.main.pressure} hPa</span>
+                Pressure: <span>{forecast?.main.pressure} hPa</span>
               </div>
 
               <div className="sunrise-sunset">
                 <div className="sunrise">
-                  Sunrise{" "}
+                  Sunrise:{" "}
                   <span>
                     {convertTime(forecast?.sys.sunrise, forecast?.timezone)}
                   </span>
                 </div>
                 <div className="sunset">
-                  Sunset{" "}
+                  Sunset:{" "}
                   <span>
                     {convertTime(forecast?.sys.sunset, forecast?.timezone)}
                   </span>
