@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://api.openweathermap.org/data/2.5";
+const baseUrl = "http://api.openweathermap.org";
 
 export const fetchWeather = async (city: string) => {
   const response = await axios
@@ -20,7 +20,7 @@ export const fetchWeather = async (city: string) => {
 export const fetchForecast = async (city: string) => {
   const response = await axios
     .get(
-      `${baseUrl}/forecast?q=Phoenix&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+      `${baseUrl}/data/2.5/forecast?q=Phoenix&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
     )
     .then((response) =>
       response.data.list.filter((date: any) => date.dt_txt.includes("21:00"))
@@ -33,7 +33,7 @@ export const fetchForecast = async (city: string) => {
 export const fetchLocation = async (city: string) => {
   const response = await axios
     .get(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+      `${baseUrl}/geo/1.0/direct?q=${city}&limit=1&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
     )
     .then((response) => response.data[0]);
 
@@ -50,7 +50,7 @@ export const fetchWeatherData = async (city: string) => {
   if (coords.status === 200) {
     const response = await axios
       .get(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${coords?.response?.lat}&lon=${coords?.response?.lon}&exclude=minutely,hourly,current&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+        `${baseUrl}/data/2.5/onecall?lat=${coords?.response?.lat}&lon=${coords?.response?.lon}&exclude=minutely,hourly,current&units=imperial&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       )
       .then((resp) => resp.data.daily)
       .catch((error) => error);
